@@ -1,0 +1,7 @@
+dbname=eater
+user=postgres
+password=1111
+host=localhost
+port=5432
+application_name=eater
+autocommit=True

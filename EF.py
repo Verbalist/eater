@@ -4,7 +4,7 @@ import datetime
 import decimal
 import json
 
-with open('/var/www/config.txt', 'r') as config:
+with open('/home/verbalist/PycharmProjects/eater/config.txt', 'r') as config:
     db_config = {row.split('=')[0]: row.split('=')[1].strip('\n') for row in config}
 
 class Entity(object):
@@ -72,7 +72,10 @@ class PostgresStorage(object):
 
     def execute(self, query, args=()):
         C = self.get_cursor()
-        C.execute(query, args)
+        if args:
+            C.execute(query, args)
+        else:
+            C.execute(query)
 
 
 db = PostgresStorage(db_config, factory='Class')
